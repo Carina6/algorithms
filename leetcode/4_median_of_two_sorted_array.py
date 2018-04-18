@@ -61,6 +61,7 @@ def test_find_median_sorted_arrays():
                 i = i//2
                 j = k-i
             if B[l2] > A[r1]:
+                # todo
                 i += 1
                 j = k-i
             else:
