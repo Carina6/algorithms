@@ -50,26 +50,31 @@ def test_find_median_sorted_arrays():
         if m > n:
             A, B, m, n = B, A, n, m
 
-        k = m+n+1
-        i = m+1
-        j = k - i
+        imin, imax = 0, m-1
+        k = (m + n + 1) // 2
+        carry = (m + n) % 2
 
-        while True:
-            l1 = (i-1)//2
-            r1 = i//2
-            l2 = (j-1)//2
-            r2 = j//2
+        while imin <= imax:
+            c1 = imin + (imin + imax) // 2
+            c2 = k-c1
 
-            if A[l1] > B[r2]:
-                i = i//2
-                j = k-i
-            if B[l2] > A[r1]:
-                # todo
-                i += 1
-                j = k-i
+            if c1 > 0 and A[c1-1] > B[c2]:
+                imax = c1-1
+            elif c2 > 0 and B[c2-1] > A[c1]:
+                imin = c1
             else:
-                return (max(A[l1], B[l2]) + min(A[r1], B[r2])) / 2
+                lmax = 0
+                if c1 > 0 and c2 > 0:
+                    lmax = max(A[c1 - 1], B[c2 - 1])
+                elif c1 > 0:
+                    lmax = A[c1 - 1]
+                elif c2 > 0:
+                    lmax = B[c2 - 1]
 
+                if carry == 0:
+                    return (lmax + min(A[c1], B[c2])) / 2
+                else:
+                    return lmax
 
     print()
-    print(find_median_sorted_arrays([1], [0]))
+    print(find_median_sorted_arrays2([1,3], [2]))
