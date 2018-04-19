@@ -61,7 +61,7 @@ def test_find_median_sorted_arrays():
             if c1 > 0 and A[c1-1] > B[c2]:
                 imax = c1-1
             elif c2 > 0 and B[c2-1] > A[c1]:
-                imin = c1
+                imin = c1+1
             else:
                 lmax = 0
                 if c1 > 0 and c2 > 0:
