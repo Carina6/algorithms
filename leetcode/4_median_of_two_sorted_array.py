@@ -5,8 +5,11 @@
 # 4. Median of Two Sorted Arrays
 def test_find_median_sorted_arrays():
     '''
-    思路：
-    时间复杂度：
+    思路：创建(m+n)/2 + 1长度的数组arr，存前(m+n)/2 + 1 个最小数，
+         如果两数组长度和为奇数，则中位数为arr中的最后一位，为偶数，则为最后两位的平均数
+    1.遍历nums1,nums2
+    2.选取最小的存在arr
+    时间复杂度：O(m+n) 116 ms
     '''
     def find_median_sorted_arrays(nums1, nums2):
         median_len = (len(nums1) + len(nums2)) // 2
