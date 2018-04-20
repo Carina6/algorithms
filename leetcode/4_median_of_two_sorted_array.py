@@ -44,10 +44,11 @@ def test_find_median_sorted_arrays():
             return (arr[median_len-1] + arr[median_len]) / 2
 
     '''
-    思路：创建(m+n)/2 + 1长度的数组arr，存前(m+n)/2 + 1 个最小数，
-         如果两数组长度和为奇数，则中位数为arr中的最后一位，为偶数，则为最后两位的平均数
-    1.遍历nums1,nums2
-    2.选取最小的存在arr
+    思路：
+    找分割点c1, c2分别将两个数组分割为左右两个子数组（l1,r1）(l2,r2)，使得len(l1)+len(l2)=两数组长度的一半
+    此时，中位数=（l1 和 l2中的最大值） 或者 （（l1 和 l2中的最大值）+ （r1 和 r2 中的最小值））/2
+    如何找分割点c1:
+    使用二分法遍历较小的数组，如果满足: max(l1) < min(r2) and max(l2) < min(r1), 则找到分割点c1，
     时间复杂度：O(log(min(m, n))) 108 ms
     '''
     def find_median_sorted_arrays2(nums1, nums2):
