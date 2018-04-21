@@ -16,8 +16,7 @@ def test_longest_palindrome():
         # 字符串长度
         s_len = len(s)
         for i in range(1, 2*s_len+1):
-            # 以当前遍历的字符为中心的回文长度
-            i_len = 0
+            # i_len :以当前遍历的字符为中心的回文长度
             if i%2 == 1:
                 l = (i-2)//2
                 r = (i+2)//2
@@ -25,6 +24,7 @@ def test_longest_palindrome():
             else:
                 l = (i-1)//2
                 r = (i+1)//2
+                i_len = 0
 
             while l >=0 and r <s_len:
                 if s[l]==s[r]:
