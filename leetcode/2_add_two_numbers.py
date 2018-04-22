@@ -1,24 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from models.list_node import ListNode
 
 
 # 2. 两数相加（链表）
 def test_add_two_numbers():
-
-    class ListNode:
-        def __init__(self, x):
-            self.val = x
-            self.next = None
-
-        def __str__(self):
-            s = str(self.val)
-            temp = self
-            while temp.next:
-                s = s + '->' + str(temp.next.val)
-                temp = temp.next
-
-            return s
-
     '''
     思路：
     时间复杂度：O(n)
