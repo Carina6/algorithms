@@ -13,3 +13,4 @@ gitrepo==0.2.2
 pytime==0.2.0
 bs4==0.0.1
 pipe
+numpy
