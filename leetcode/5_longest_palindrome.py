@@ -6,7 +6,7 @@
 def test_longest_palindrome():
     '''
     思路：使用'#'字符将字符串长度扩充到2*m+1, 循环遍历，往两边扩，比较两边的字符是否相等
-    时间复杂度：O(n) 824 ms
+    时间复杂度：O(n^2) 824 ms
     '''
     def longest_palindrome(s):
         # 最大回文的起始索引值
