@@ -12,26 +12,17 @@ def test_str_to_int():
         s = str.strip()
         res = 0
 
-        if s[0] not in ['-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] or len(s) == 0:
+        if len(s) == 0 or s[0] not in ['-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
             return res
 
         i = 1 if s[0] in ['-', '+'] else 0
-        while i < len(s):
-            if s[i] in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
-                res = res * 10 + int(s[i])
-                i += 1
-            else:
-                break
+        while i < len(s) and s[i].isdigit():
+            res = res * 10 + int(s[i])
+            i += 1
 
-        if s[0] == '-':
-            res = -res
+        sign = -1 if s[0] == '-' else 1
 
-        if res < -2147483648:
-            res = -2147483648
-        elif res > 2147483647:
-            res = 2147483647
-
-        return res
+        return max(-2**31, min(res*sign, 2**31-1))
 
     print()
-    print(str_to_int('010'))
+    print(str_to_int(''))
