@@ -32,17 +32,20 @@ def test_regular_express_match():
             else:
                 return False
 
-        if i < pl and p[i] == '*':
-            i += 1
-            while i < pl:
-                if p[i] not in ['*', s[sl - 1]] and p[i + 1] != '*':
-                    return False
-        if j == sl:
-            if i == pl:
-                return True
+        if i < pl:
+            if p[i] == '*':
+                i += 1
+                while i < pl:
+                    if p[i] == '*':
+                        i += 1
+                    elif p[i] != s[sl - 1] and i+1 < pl and p[i + 1] != '*':
+                        return False
+                    else:
+                        pass
 
-        return False
-        # return j == sl
+
+
+        return j == sl and i > pl
 
     print()
     print(is_match('aaa', 'ab*a*c*a'))
