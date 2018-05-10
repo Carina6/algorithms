@@ -14,3 +14,4 @@ pytime==0.2.0
 bs4==0.0.1
 pipe
 numpy
+Flask-RESTful==0.3.6
