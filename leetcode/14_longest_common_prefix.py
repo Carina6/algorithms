@@ -60,7 +60,7 @@ def test_longest_common_prefix():
             return ''
         '''
         *str : unpacking list, 可将list 拆解成多个参数传入函数参数
-        zip : 将传入的多个参数对应位置的字符配对
+        zip : 将传入的多个参数对应位置的字符组成新的数组
         '''
         for i, letter_group in enumerate(zip(*strs)):
             if len(set(letter_group)) > 1:
