@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
-# 15. 3Sum
 from itertools import combinations, starmap
 
 
+# 15. 3Sum
 def test_three_sum():
     '''
     思路：
