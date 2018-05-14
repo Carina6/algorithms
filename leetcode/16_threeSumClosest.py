@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
 from itertools import combinations, starmap
 
 
 # 16. 3Sum Closest
-import math
-
-import sys
-
-
 def test_three_sum_closest():
     '''
     思路：
@@ -33,7 +29,7 @@ def test_three_sum_closest():
 
     '''
     思路：
-    时间复杂度：
+    时间复杂度：O(n^2)
     '''
     def three_sum_closest2(nums, target):
         nums.sort()
