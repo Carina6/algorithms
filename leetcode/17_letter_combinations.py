@@ -33,5 +33,21 @@ def test_letter_combinations():
 
         return temp
 
+    '''
+    思路：
+    时间复杂度：
+    '''
+    def letter_combinations2(digits):
+        res = []
+        if not digits:
+            return res
+
+        c = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+
+        groups = product(*(c[int(d)] for d in digits if c[int(d)] != ''))
+        res = [''.join(x) for x in groups]
+
+        return res
+
     print()
-    print(letter_combinations('2'))
+    print(letter_combinations2('234'))
