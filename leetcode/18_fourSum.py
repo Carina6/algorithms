@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from copy import deepcopy
 from itertools import combinations, starmap
 
 
@@ -12,6 +11,11 @@ def test_four_sum():
     '''
     def four_sum(nums, target):
         res = []
+
+        nums.sort()
+        if len(nums) < 4 or 4 < 2 or target < nums[0]*4 or target > nums[-1]*4:  # early termination
+            return []
+
         # 产生不重复的组合
         cbs = list(combinations(nums, 4))
         res_temp = []
@@ -31,47 +35,37 @@ def test_four_sum():
         return a+b+c+d
 
     '''
-    思路：
+    思路：实现N个数的和等于target
     时间复杂度：
     '''
     def four_sum2(nums, target):
-        nums.sort()
+        def N_sum(nums, N, target, result, results):
+            if len(nums) < N or N < 2 or target < nums[0] * N or target > nums[-1] * N:
+                return []
 
-        res = []
-        for i in range(len(nums)):
-            if i > 0 and nums[i] == nums[i-1]:
-                continue
-            t_nums = deepcopy(nums)
-            t_nums.pop(i)
-            t_res = three_sum(t_nums, target-nums[i])
-            for j in t_res:
-                j.append(nums[i])
-                res.append(j)
-
-        return res
-
-    def three_sum(nums, target):
-        nums.sort()
-
-        res = []
-        for i in range(len(nums)-2):
-            if i > 0 and nums[i] == nums[i-1]:
-                continue
-            l, h, sum = i+1, len(nums)-1, target-nums[i]
-            while l < h:
-                if nums[l] + nums[h] == sum:
-                    res.append([nums[i], nums[l], nums[h]])
-                    while l < h and nums[l] == nums[l+1]:
+            if N == 2:
+                l, h = 0, len(nums) - 1
+                while l < h:
+                    if nums[l] + nums[h] == target:
+                        results.append(result + [nums[l], nums[h]])
+                        while l < h and nums[l] == nums[l + 1]:
+                            l += 1
+                        while l < h and nums[h] == nums[h - 1]:
+                            h -= 1
                         l += 1
-                    while l < h and nums[h] == nums[h-1]:
                         h -= 1
-                    l += 1
-                    h -= 1
-                elif nums[l] + nums[h] < sum:
-                    l += 1
-                else:
-                    h -= 1
+                    elif nums[l] + nums[h] < target:
+                        l += 1
+                    else:
+                        h -= 1
+            else:
+                for i in range(len(nums) - N + 1):
+                    if i == 0 or nums[i] != nums[i - 1]:
+                        N_sum(nums[i+1:], N - 1, target - nums[i], result+[nums[i]], results)
 
+            return results
+
+        res = N_sum(sorted(nums), 4, target, [], [])
         return res
 
     print()
