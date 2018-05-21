@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
-# 20. Valid Parentheses
 from queue import LifoQueue
 
 
+# 20. Valid Parentheses
 def test_valid_parentheses():
     '''
     思路：
