@@ -15,3 +15,14 @@ class ListNode:
             temp = temp.next
 
         return s
+
+    # def __cmp__(self, other):
+    #     if self.val < other.val:
+    #         return -1
+    #     elif self.val > other.val:
+    #         return 1
+    #     else:
+    #         return 0
+    #
+    def __lt__(self, other):
+        return self.val < other.val
