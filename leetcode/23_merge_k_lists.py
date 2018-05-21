@@ -39,7 +39,7 @@ def test_merge_k_lists():
 
 
     '''
-    思路：
+    思路：采用PriorityQueue实现，PriorityQueue内部使用小堆排序
     时间复杂度：
     '''
 
