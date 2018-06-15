@@ -31,7 +31,25 @@ def test_swap_pairs():
 
         return res.next
 
-    l3 = list_node_generator([1, 2, 3, 4, 5, 6])
+
+    '''
+    思路：递归
+    时间复杂度：
+    '''
+
+    def swap_pairs2(head):
+        if head is None or head.next is None:
+            return head
+
+        res = temp = ListNode(0)
+        temp.next = head.next
+        a = swap_pairs2(head.next.next)
+        head.next = a
+        temp.next.next = head
+
+        return res.next
+
+    l3 = list_node_generator([1, 2, 3, 4, 5])
 
     print()
     print(swap_pairs(l3))

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from queue import LifoQueue
 
 
 class ListNode:
@@ -26,3 +27,18 @@ class ListNode:
     #
     def __lt__(self, other):
         return self.val < other.val
+
+    def __reversed__(self):
+        head = self
+        lf = LifoQueue()
+        res = temp = ListNode(0)
+
+        while head:
+            lf.put(head.val)
+            head = head.next
+
+        while not lf.empty():
+            temp.next = ListNode(lf.get())
+            temp = temp.next
+
+        return res.next
