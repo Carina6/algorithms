@@ -36,5 +36,41 @@ def test_find_sub_str():
 
         return res
 
+
+
+    '''
+    思路：
+    时间复杂度：
+    '''
+
+    def find_sub_str2(s, words):
+        res=[]
+        if len(words) == 0 or len(s)==0:
+            return res
+
+        words_count = {}
+        for i in words:
+            words_count[i] = 1 if words_count[i] is None else words_count[i]+1
+
+        n = len(words)
+        m = len(words[0])
+        j = 0
+        res_dict = {}
+        for i in range(len(s)):
+            if j == n:
+
+            st = s[i:i+j*m]
+            if st in words:
+                res_dict[st] = 1 if res_dict[st] is None else res_dict[st]+1
+            else:
+                j = 0
+                res_dict = {}
+            if res_dict[st] > words_count[st]:
+                j=0
+                res_dict={}
+
+
+        return res
+
     print()
-    print(find_sub_str('barfoothefoobarman', ["foo", "bar"]))
+    print(find_sub_str2('barfoothefoobarman', ["foo", "bar"]))
