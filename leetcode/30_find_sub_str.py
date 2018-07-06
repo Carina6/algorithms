@@ -56,18 +56,26 @@ def test_find_sub_str():
         m = len(words[0])
         j = 0
         res_dict = {}
+        count = 0
         for i in range(len(s)):
-            if j == n:
+            k = i
+            while k < len(s)-m:
+                st = s[k:k+j*m]
+                if st in words:
+                    res_dict[st] = 1 if res_dict[st] is None else res_dict[st]+1
+                else:
+                    for v in res_dict.values():
+                        count+=v
+                    if count == n:
+                        res.append(i)
+                    else:
+                        j = 0
+                        count = 0
+                        res_dict = {}
 
-            st = s[i:i+j*m]
-            if st in words:
-                res_dict[st] = 1 if res_dict[st] is None else res_dict[st]+1
-            else:
-                j = 0
-                res_dict = {}
-            if res_dict[st] > words_count[st]:
-                j=0
-                res_dict={}
+                if res_dict[st] > words_count[st]:
+                    j=0
+                    res_dict={}
 
 
         return res
