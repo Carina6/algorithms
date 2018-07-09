@@ -36,49 +36,38 @@ def test_find_sub_str():
 
         return res
 
-
-
     '''
     思路：
     时间复杂度：
     '''
 
     def find_sub_str2(s, words):
-        res=[]
-        if len(words) == 0 or len(s)==0:
+        res = []
+        if len(words) == 0 or len(s) == 0:
             return res
 
         words_count = {}
         for i in words:
-            words_count[i] = 1 if words_count[i] is None else words_count[i]+1
+            words_count[i] = words_count[i] + 1 if i in words_count.keys() else 1
 
         n = len(words)
         m = len(words[0])
-        j = 0
-        res_dict = {}
-        count = 0
-        for i in range(len(s)):
-            k = i
-            while k < len(s)-m:
-                st = s[k:k+j*m]
+        # len(s)-n*m+1 剩余长度没有达到words总长度，可不必遍历
+        for i in range(len(s) - n * m + 1):
+            res_dict = {}
+            j = 0
+            while j < n:
+                st = s[i + j * m:i + (j + 1) * m]
                 if st in words:
-                    res_dict[st] = 1 if res_dict[st] is None else res_dict[st]+1
+                    res_dict[st] = res_dict[st] + 1 if st in res_dict else 1
+                    if res_dict[st] > words_count[st]:
+                        break
                 else:
-                    for v in res_dict.values():
-                        count+=v
-                    if count == n:
-                        res.append(i)
-                    else:
-                        j = 0
-                        count = 0
-                        res_dict = {}
-
-                if res_dict[st] > words_count[st]:
-                    j=0
-                    res_dict={}
-
-
+                    break
+                j += 1
+            if j == n:
+                res.append(i)
         return res
 
     print()
-    print(find_sub_str2('barfoothefoobarman', ["foo", "bar"]))
+    print(find_sub_str2('wordgoodgoodgoodbestword', ["word", "good", "best", "good"]))
