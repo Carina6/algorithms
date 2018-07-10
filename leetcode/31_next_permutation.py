@@ -11,14 +11,25 @@ def test_next_permutation():
 
     def next_permutation(nums):
         index = 0
+        j = len(nums) - 1
         for i in range(len(nums) - 1, 0, -1):
-            if nums[i] > nums[i-1]:
-                nums[i], nums[i-1] = nums[i-1], nums[i]
-                index = i
+            if nums[i] > nums[i - 1]:
+                nums[i - 1], nums[j] = nums[j], nums[i - 1]
+                temp = nums[i-1:j + 1]
+                temp.sort()
+                k = 0
+                h = i
+                while h <= j:
+                    if temp[k] > nums[i]:
+
+                    nums[h] = temp[k]
+                    h += 1
+                    k += 1
                 break
-        if index == len(nums)-1:
-            return nums.reverse()
+            index = i
+        if index == 1:
+            nums.reverse()
         return nums
 
     print()
-    print(next_permutation([3,2,1]))
+    print(next_permutation([2, 3, 1]))
