@@ -6,6 +6,8 @@ from models.list_node import ListNode
 
 def test_a():
     def reverse_link_list(l):
+        if l is None:
+            return l
         i = ListNode(l.val)
         j = l.next
         while j:
@@ -16,4 +18,4 @@ def test_a():
 
         return i
 
-    print(reverse_link_list(list_node_generator([1, 2, 3, 4, 5])))
+    print(reverse_link_list(list_node_generator([])))
