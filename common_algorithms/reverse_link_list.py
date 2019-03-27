@@ -9,6 +9,32 @@ from models.list_node import ListNode
 # 单链表反转
 def test_reverse_link():
     '''
+    三指针，优化
+    :return:
+    '''
+    def method3(l):
+        if l is None:
+            return l
+        i = ListNode(l.val)
+        j = l.next
+        while j:
+            temp = j.next
+            j.next = i
+            i = j
+            j = temp
+
+        return i
+
+    '''
+    从后往前打印
+    '''
+    def print_end_to_start(l):
+        if l and l.next:
+            print_end_to_start(l.next)
+        print(l.val)
+
+
+    '''
     空间换时间，使用数组存储链表中的值
     :return:
     '''
@@ -49,25 +75,12 @@ def test_reverse_link():
 
         return res
 
-    def method3(l):
-        if l is None:
-            return l
-        i = ListNode(l.val)
-        j = l.next
-        while j:
-            temp = j.next
-            j.next = i
-            i = j
-            j = temp
+    # l1 = list_node_generator([])
+    # l2 = list_node_generator([1, 3, 4, 9, 0, 7])
+    # print()
+    # print(method1(l1))
+    # print(method2(l2))
 
-        return i
+    # print(method3(list_node_generator([1, 3, 4, 9, 0, 7])))
+    print(print_end_to_start(list_node_generator([1, 3, 4, 9, 0, 7])))
 
-
-    l1 = list_node_generator([])
-    l2 = list_node_generator([1, 3, 4, 9, 0, 7])
-    print()
-    print(method1(l1))
-    print(method2(l2))
-
-
-    print(method3(list_node_generator([])))
