@@ -5,6 +5,7 @@
 from random import choice
 
 
+# 左移m位
 def move(arr, m):
     n = len(arr)
     m = m % n
