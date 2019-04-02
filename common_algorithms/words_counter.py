@@ -5,6 +5,9 @@
 import re
 from collections import Counter
 
-words = re.findall(r'\w+', open('test.txt').read().lower())
+with open('test.txt', 'r', encoding='utf-8') as f:
+    text = f.read()
+    words = re.findall(r'\w+', text.lower())
+    count = Counter(words)
 
-print(Counter(words).most_common(3))
+print(count.most_common(3))
