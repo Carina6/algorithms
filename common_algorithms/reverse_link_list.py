@@ -56,25 +56,6 @@ def test_reverse_link():
 
         return ll.next
 
-    '''
-    使用三个指针，交换位置
-    '''
-
-    def method2(ln):
-        if ln is None or ln.next is None:
-            return ln
-
-        res = ln
-        tail = ln.next
-        res.next = None
-        while tail:
-            tmp = tail.next
-            tail.next = res
-            res = tail
-            tail = tmp
-
-        return res
-
     # l1 = list_node_generator([])
     # l2 = list_node_generator([1, 3, 4, 9, 0, 7])
     # print()

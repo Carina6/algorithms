@@ -9,29 +9,31 @@
 右子节点下标：2*i+2
 最后一个非叶子节点下标，即最后一个数的下标的父节点：(n-2)/2, n为数组长度
 '''
+
+
 def test_heap_sort():
     def heap_sort(nums):
         init_heap(nums)
         sort_nums = []
-        for i in range(len(nums) - 1, -1, -1):
+        while len(nums) > 0:
             sort_nums.append(nums[0])
 
-            nums[0], nums[i] = nums[i], nums[0]
-            nums.remove(nums[i])
+            nums[0], nums[-1] = nums[-1], nums[0]
+            nums.remove(nums[-1])
 
-            adjust_heap(nums, 0, i)
+            adjust_heap(nums, 0, len(nums))
         return sort_nums
 
     # 初始化堆, 从最后一个非叶子节点（下标：(n-2)/2, n为数组长度）开始往前调整
     def init_heap(nums):
-        for i in range((len(nums)-2)//2, -1, -1):
+        for i in range((len(nums) - 2) // 2, -1, -1):
             adjust_heap(nums, i, len(nums))
 
     # 调整第i个节点的值，以及其后所影响的节点
     def adjust_heap(nums, i, n):
         j = 2 * i + 1
         while j < n:
-            if j + 1 < n and nums[j] < nums[j+1]:
+            if j + 1 < n and nums[j] < nums[j + 1]:
                 j += 1
             if nums[j] < nums[i]:
                 break
