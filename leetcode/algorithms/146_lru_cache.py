@@ -34,6 +34,7 @@ class LRUCache:
             index = self.capacity - 1
             self.map.pop(self.arr[index])
 
+        # 说明：arr[index+1:] 当index+1超出数组长度时，不会报错，返回[]
         self.arr = [key]+self.arr[:index]+self.arr[index+1:]
         self.map[key] = value
 

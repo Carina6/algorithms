@@ -21,4 +21,31 @@ def method1(nums):
     return method1(left) + mid + method1(right)
 
 
-print(method1([3, 4, 6, 2, 4, 9]))
+def method2(nums):
+    if len(nums) < 2:
+        return
+
+    sort(nums, 0, len(nums) - 1)
+
+
+def sort(nums, start, end):
+    if start > end:
+        return
+    patation = nums[start]
+    low = start
+    high = end
+    while start < end:
+        while start < end and nums[end] > patation:
+            end -= 1
+        nums[start] = nums[end]
+        while start < end and nums[start] <= patation:
+            start += 1
+        nums[end] = nums[start]
+    nums[start] = patation
+    sort(nums, low, start-1)
+    sort(nums, start+1, high)
+
+
+nums = [3, 4, 6, 2, 4, 9]
+method2(nums)
+print(nums)
