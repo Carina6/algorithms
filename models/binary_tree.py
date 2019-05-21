@@ -23,21 +23,19 @@ class Node(object):
         return s
 
 
-# class BinaryTree(object):
-#     """
-#     generate binary tree
-#     """
-#
-#     def __init__(self, arr):
-#         self.root = tree_node_generator(arr)
-#
-#     def __str__(self):
-#         q = Queue()
-#         q.put(self.root)
-#         while not q.empty():
-#             tmp = q.get()
-#             print(tmp.val)
-#             if tmp.left:
-#                 q.put(tmp.left)
-#             if tmp.right:
-#                 q.put(tmp.right)
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+    def __str__(self):
+        if self is None:
+            return
+        if self.left is not None:
+            self.left.__str__()
+
+        print(self.val)
+
+        if self.right is not None:
+            self.right.__str__()
