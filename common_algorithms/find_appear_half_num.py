@@ -20,11 +20,17 @@ def method(nums):
             compare = nums[i]
             count = 1
 
-# 最后可遍历一遍，统计compare出现的次数，如果小于数组长度的一半，则返回空
-    if count > 1:
+    # 最后可遍历一遍，统计compare出现的次数，如果小于数组长度的一半，则返回空
+    count = 0
+    for i in nums:
+        if i == compare:
+            count += 1
+
+    if count > len(nums)//2:
         return compare
     else:
         return None
 
 
-print(method([1, 2, 3, 4, 5, 3, 3]))
+if __name__ == '__main__':
+    print(method([1, 2, 1, 4, 5, 3, 3]))
