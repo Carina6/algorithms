@@ -22,6 +22,7 @@ class Solution:
             self.b.put(self.a.get())
         return self.b.get()
 
+
 if __name__ == '__main__':
     s = Solution()
     s.push(1)

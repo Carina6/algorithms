@@ -4,6 +4,7 @@
 # @Author: hlliu
 
 
+# 实现 x^n
 def test_x_pow_n():
 
     def method1(x, n):
@@ -18,3 +19,4 @@ def test_x_pow_n():
         return res
 
     print(method1(2,3))
+
